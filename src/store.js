@@ -5,12 +5,36 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        products: [
-            {id: 1,title: '產品1',price: 10,image: 'https://via.placeholder.com/300x200'},
-            {id: 2,title: '產品2',price: 20,image: 'https://via.placeholder.com/300x200'},
-            {id: 3,title: '產品3',price: 30,image: 'https://via.placeholder.com/300x200'},
-            {id: 4,title: '產品4',price: 40,image: 'https://via.placeholder.com/300x200'},
-            {id: 5,title: '產品5',price: 50,image: 'https://via.placeholder.com/300x200'}
+        products: [{
+                id: 1,
+                title: '產品1',
+                price: 10,
+                image: 'https://via.placeholder.com/300x200'
+            },
+            {
+                id: 2,
+                title: '產品2',
+                price: 20,
+                image: 'https://via.placeholder.com/300x200'
+            },
+            {
+                id: 3,
+                title: '產品3',
+                price: 30,
+                image: 'https://via.placeholder.com/300x200'
+            },
+            {
+                id: 4,
+                title: '產品4',
+                price: 40,
+                image: 'https://via.placeholder.com/300x200'
+            },
+            {
+                id: 5,
+                title: '產品5',
+                price: 50,
+                image: 'https://via.placeholder.com/300x200'
+            }
         ],
         cart: []
     },
@@ -31,6 +55,12 @@ const store = new Vuex.Store({
     // 4. 在 Vue.js 的 components 裡面我們可以透過 this.$store.getters.cartTotalPrice 來取得購物車中的所有產品的總價格。這裡的 cartTotalPrice 是我們自己定義的 getters。
     getters: {
         // 取得購物車內所有產品
+        // 這個程式是一個函式，名稱為 getCartProducts，它接收一個 
+        // state參數，代表應用程式的狀態。這個函式的目的是從購物車中取得所有產品，並回傳一個包含產品資訊的陣列。
+
+        // 在函式內部，我們使用 
+        // map方法來遍歷購物車中的每個項目，並將其轉換為一個新的物件，其中包含產品的 id、標題、價格和數量。為了取得產品的資訊，我們使用 
+        // find方法來在產品列表中尋找與購物車項目相符的產品。最後，我們回傳一個包含所有產品資訊的陣列。
         cartProducts: state => {
             return state.cart.map(cartItem => {
                 const product = state.products.find(product => product.id === cartItem.id);
@@ -43,6 +73,9 @@ const store = new Vuex.Store({
             });
         },
         // 取得購物車內產品總價格
+        // 這段程式碼是一個計算購物車總價格的函式，它接受兩個參數：state 和 getters。state 是 Vuex store 中的狀態，getters 是一個用於從 store 中獲取數據的函式。
+        // 在函式中，它使用 getters 中的 cartProducts 屬性來獲取購物車中的所有產品，然後使用 reduce() 方法將每個產品的價格乘以其數量，並將結果加總起來，最後返回總價格。
+        // 簡單來說，這段程式碼的邏輯是計算購物車中所有產品的價格總和。
         cartTotalPrice: (state, getters) => {
             return getters.cartProducts.reduce((total, product) => total + product.price * product.quantity, 0);
         }
