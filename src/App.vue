@@ -2,13 +2,13 @@
   <div id="app">
     <h1>Vue.js 2 + Vuex Example</h1>
     <section>
-      <h2>Products</h2>
+      <h2>產品例表</h2>
       <div class="products-list">
         <Product v-for="product in products" :key="product.id" :product="product" />
       </div>
     </section>
     <section>
-      <h2>Cart</h2>
+     
       <Cart />
     </section>
   </div>
@@ -23,6 +23,7 @@ export default {
     Cart
   },
   computed: {
+    // 使用 Vuex 管理的產品資訊
     products() {
       return this.$store.state.products;
     }
