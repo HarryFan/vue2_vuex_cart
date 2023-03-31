@@ -29,13 +29,6 @@ npm run serve
 
 此命令會安裝所有必需的依賴項並啟動開發服務器，您可以在瀏覽器中查看應用程序。
 
-目錄結構
-----
-
-```
-├── public/                     # 靜態文件目錄│   ├── index.html              # 首頁文件├── src/                        # 應用程序源代碼目錄│   ├── components/             # Vue 組件目錄│   │   ├── Cart.vue            # 購物車組件│   │   ├── ProductList.vue     # 產品列表組件│   ├── store/                  # Vuex 相關代碼目錄│   │   ├── index.js            # Vuex store 實例│   ├── App.vue                 # Vue 根組件│   ├── main.js                 # 應用程序入口文件├── .eslintrc.js                # ESLint 配置文件├── babel.config.js             # Babel 配置文件├── package.json                # 應用程序依賴項及相關命令配置文件├── README.md                   # 本文件
-```
-
 說明
 --
 
@@ -52,14 +45,14 @@ npm run serve
 
 在 `src/components/` 目錄中，我們定義了兩個 Vue 組件：
 
-*   `Cart.vue`：用於顯示購物車內的商品和總價。
+*   `ShoppingCart.vue`：用於顯示購物車內的商品和總價。
 
 *   `ProductList.vue`：用於顯示所有產品，並提供將產品加入購物車的按鈕。
     
 
 這兩個組件都是基本的 Vue 組件，它們都使用了 Vuex 存儲。
 
-在 `Cart.vue` 組件中，我們使用 `mapGetters` 來綁定 `cartProducts` 和 `cartTotalPrice` 屬性。這些 getters 是從 Vuex store 中取出的，它們會計算出購物車中的商品和總價。
+在 `ShoppingCart.vue` 組件中，我們使用 `mapGetters` 來綁定 `cartProducts` 和 `cartTotalPrice` 屬性。這些 getters 是從 Vuex store 中取出的，它們會計算出購物車中的商品和總價。
 
 在 `ProductList.vue` 組件中，我們使用 `mapMutations` 來綁定 `addToCart` 方法。這個方法會將所選產品添加到 Vuex store 的 `cart` 陣列中。
 
@@ -75,11 +68,11 @@ npm run serve
 
 ### 組件樣式
 
-在 `src/App.vue`、`src/components/Cart.vue` 和 `src/components/ProductList.vue` 中，我們定義了一些基本的 CSS 樣式，用於使組件顯示得更美觀。
+在 `src/App.vue`、`src/components/ShoppingCart.vue` 和 `src/components/ProductList.vue` 中，我們定義了一些基本的 CSS 樣式，用於使組件顯示得更美觀。
 
 在 `src/components/ProductList.vue` 中，我們定義了一些 CSS 樣式，用於將產品顯示為網格，每行三個。我們還定義了一個樣式來調整產品項目的大小和間距。
 
-在 `src/components/Cart.vue` 中，我們定義了一些 CSS 樣式，用於調整購物車內容的大小和間距。我們還定義了一個樣式，用於將購物車中的每個商品顯示為清單項目。
+在 `src/components/ShoppingCart.vue` 中，我們定義了一些 CSS 樣式，用於調整購物車內容的大小和間距。我們還定義了一個樣式，用於將購物車中的每個商品顯示為清單項目。
 
 ### 總結
 --
